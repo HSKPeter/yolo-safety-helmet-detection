@@ -1,4 +1,20 @@
+SHELL := $(shell which bash)
+
 VIRTUAL_ENV_NAME="venv"
+
+# From https://gist.github.com/sighingnow/deee806603ec9274fd47
+OSFLAG 				:=
+ifeq ($(OS),Windows_NT)
+	OSFLAG = WIN32
+else
+	UNAME_S := $(shell uname -s)
+	ifeq ($(UNAME_S),Linux)
+		OSFLAG = LINUX
+	endif
+	ifeq ($(UNAME_S),Darwin)
+		OSFLAG = OSX
+	endif
+endif
 
 # Executables
 PYTHON3_VENV_BIN_PATH := "${VIRTUAL_ENV_NAME}/bin/python3.11"
@@ -31,6 +47,25 @@ show-setup-dataset-steps:
 install:
 	@echo "Installing dependencies ..."
 	@${PYTHON3_VENV_PIP_PATH} install -r requirements.txt --upgrade pip --quiet	
+	@$(MAKE) install-pytorch
+
+# From https://pytorch.org/get-started/locally/
+install-pytorch:
+ifeq ($(OSFLAG),LINUX)
+	@echo "Installing PyTorch for Linux ..."
+	@${PYTHON3_VENV_PIP_PATH} install torch torchvision torchaudio
+endif
+
+ifeq ($(OSFLAG),OSX)
+	@echo "Installing PyTorch for OSX ..."
+	@${PYTHON3_VENV_PIP_PATH} install torch torchvision torchaudio --quiet
+endif
+
+ifeq ($(OSFLAG),WIN32)
+	@echo "Installing PyTorch for Windows ..."
+	@${PYTHON3_VENV_PIP_PATH} install torch torchvision torchaudio --quiet
+endif
+	
 
 # Build project
 build:
