@@ -29,7 +29,7 @@ KAGGLE_DATASET_3="https://www.kaggle.com/datasets/muhammetzahitaydn/hardhat-vest
 YELLOW=\033[33m
 RESET=\033[0m
 
-all: install build run
+all: build coco8
 
 setup: create-venv install show-setup-dataset-steps
 
@@ -69,14 +69,24 @@ endif
 
 # Build project
 build:
-	@echo "Building project ..."
+	@echo "Building project artifacts ..."
 	@${PYTHON3_VENV_PIP_PATH} install -e . --quiet
 
-run:
-	@echo "Running project ..."
-	@${PYTHON3_VENV_BIN_PATH} src/model/main.py
-
-clean:
+coco8:
+	@echo "Running demo of YOLOv8 with coco8 dataset ..."
+	@${PYTHON3_VENV_BIN_PATH} src/model/coco8.py
+	
+clean-venv:
 	@echo "Cleaning virtual environment ..."
 	@rm -rf ${VIRTUAL_ENV_NAME}
 	@echo "Cleaned virtual environment!"
+
+clean-runs:
+	@echo "Cleaning runs folder ..."
+	@rm -rf runs
+	@echo "Cleaned runs folder!"
+
+clean: clean-venv clean-runs
+	@echo "Cleaned project!"
+
+

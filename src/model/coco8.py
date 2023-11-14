@@ -19,11 +19,12 @@ def main():
     # Evaluate the model's performance on the validation set
     print("Evaluating model...")
     results = model.val()
+    print(results)
 
     image_path = os.path.join(IMAGE_FOLDER_PATH, "bus.jpg")
     print(f"Predicting image at {image_path}...")
-    results = model(image_path)
-    print(results)
+    # Run inference on 'bus.jpg' with arguments
+    model.predict(image_path, save=True, imgsz=320, conf=0.5)    
 
     print("\n\nExporting model to ONNX format...")
     # Export the model to ONNX format
