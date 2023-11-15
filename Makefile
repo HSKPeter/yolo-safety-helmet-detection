@@ -81,7 +81,7 @@ train: build
 
 camera-detect:
 	@echo "Running detection on webcam ..."
-	@(cd src/submodules/yolov5 && ${PYTHON3_VENV_BIN_PATH} detect.py --source 0)
+	@(cd src/submodules/yolov5 && ${PYTHON3_VENV_BIN_PATH} detect.py --source 0 --nosave)
 	
 clean-venv:
 	@echo "Cleaning virtual environment ..."
