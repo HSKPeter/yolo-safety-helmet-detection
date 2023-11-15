@@ -1,4 +1,5 @@
 SHELL := $(shell which bash)
+ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 VIRTUAL_ENV_NAME="venv"
 
@@ -17,8 +18,8 @@ else
 endif
 
 # Executables
-PYTHON3_VENV_BIN_PATH := "${VIRTUAL_ENV_NAME}/bin/python3.11"
-PYTHON3_VENV_PIP_PATH := "${VIRTUAL_ENV_NAME}/bin/pip3.11"
+PYTHON3_VENV_BIN_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/bin/python3.11"
+PYTHON3_VENV_PIP_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/bin/pip3.11"
 
 # Dataset urls
 KAGGLE_DATASET_1="https://www.kaggle.com/datasets/snehilsanyal/construction-site-safety-image-dataset-roboflow"
@@ -46,12 +47,13 @@ install:
 	@echo "Installing dependencies ..."
 	@${PYTHON3_VENV_PIP_PATH} install -r requirements.txt --upgrade pip --quiet	
 	@$(MAKE) install-pytorch
+	@echo "Installing dependencies for submodules ..."
+	@${PYTHON3_VENV_PIP_PATH} install -r src/submodules/yolov5/requirements.txt --quiet
 
 # From https://pytorch.org/get-started/locally/
 install-pytorch:
 ifeq ($(OSFLAG),LINUX)
 	@echo "Installing PyTorch for Linux ..."
-	@${PYTHON3_VENV_PIP_PATH} install torch torchvision torchaudio
 endif
 
 ifeq ($(OSFLAG),OSX)
@@ -64,7 +66,6 @@ ifeq ($(OSFLAG),WIN32)
 	@${PYTHON3_VENV_PIP_PATH} install torch torchvision torchaudio --quiet
 endif
 	
-
 # Build project
 build:
 	@echo "Building project artifacts ..."
@@ -76,7 +77,11 @@ yolo: build
 
 train: build
 	@echo "Training custom YOLO model"
-	@(cd src && ../${PYTHON3_VENV_BIN_PATH} train.py)
+	@(cd src && ${PYTHON3_VENV_BIN_PATH} train.py)
+
+camera-detect:
+	@echo "Running detection on webcam ..."
+	@(cd src/submodules/yolov5 && ${PYTHON3_VENV_BIN_PATH} detect.py --source 0)
 	
 clean-venv:
 	@echo "Cleaning virtual environment ..."
