@@ -82,6 +82,17 @@ train: build
 camera-detect:
 	@echo "Running detection on webcam ..."
 	@(cd src/submodules/yolov5 && ${PYTHON3_VENV_BIN_PATH} detect.py --source 0 --nosave)
+
+predict-video:
+	@echo "Running prediction on test video ..."
+	@(cd src/submodules/yolov5 && ${PYTHON3_VENV_BIN_PATH} detect.py \
+									--source ${ROOT_DIR}/src/assets/video/helmet_demo.mp4 \
+									--weights ${ROOT_DIR}/src/assets/pretrained_models/yolov5s_custom_1.pt \
+									--conf 0.4)
+
+predict-img: 
+	@echo "Running prediction on test image ..."
+	@${PYTHON3_VENV_BIN_PATH} src/yolov5_custom.py
 	
 clean-venv:
 	@echo "Cleaning virtual environment ..."
