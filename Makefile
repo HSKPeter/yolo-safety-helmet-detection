@@ -40,7 +40,7 @@ show-setup-dataset-steps:
 	@echo "[STEP 1] Open your browser and visit ${KAGGLE_DATASET_1} to download dataset 1"
 	@echo "[STEP 2] Open your browser and visit ${KAGGLE_DATASET_2} to download dataset 2"
 	@echo "[STEP 3] Open your browser and visit ${KAGGLE_DATASET_3} to download dataset 3"
-	@echo "[STEP 4] Unzip the files, move them to the 'data' folder and ensure the folder structure aligns with the README guide in the 'data' folder"
+	@echo "[STEP 4] Unzip the files, move them to the 'src/assets/datasets' folder and ensure the folder structure aligns with the README guide in that folder"
 
 install:
 	@echo "Installing dependencies ..."
@@ -72,7 +72,11 @@ build:
 
 yolo: build
 	@echo "Running demo of YOLOv5 with coco8 dataset ..."
-	@${PYTHON3_VENV_BIN_PATH} src/model/yolov5.py
+	@${PYTHON3_VENV_BIN_PATH} src/yolov5.py
+
+train: build
+	@echo "Training custom YOLO model"
+	@(cd src && ../${PYTHON3_VENV_BIN_PATH} train.py)
 	
 clean-venv:
 	@echo "Cleaning virtual environment ..."
