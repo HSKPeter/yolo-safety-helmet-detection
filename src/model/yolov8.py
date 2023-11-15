@@ -5,9 +5,7 @@ from util.config import EPOCHS_COUNT, IMAGE_FOLDER_PATH, YML_DATASET_PATH
 
 def main():
     print("Loading pretrained YOLOv8 model...")
-    current_dir = os.path.dirname(os.path.realpath(__file__))
-    path_of_pretrained_model = os.path.join(current_dir, "yolov8n.pt")
-    model = YOLO(path_of_pretrained_model)
+    model = YOLO("yolov8n.pt")
     print("Loaded pretrained YOLOv8 model.")
 
     # Train the model using the 'coco8.yaml' dataset for 3 epochs

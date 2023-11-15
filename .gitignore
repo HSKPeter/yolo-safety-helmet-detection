@@ -1,5 +1,11 @@
+# Python artifacts
 *.egg-info
 __pycache__
 venv
+
+# YOLO models
+yolov8n.pt
 *.onnx
+
+# Log of running YOLO models
 runs
