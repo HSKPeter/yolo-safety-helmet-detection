@@ -10,7 +10,7 @@
 
   <img src="./docs/helmet_demo_prediction.jpg" width="200">
 
-- Run `make predict-video` to run a demo of the YOLOv5 model on a video, which will make prediction on the [video.mp4](./src/assets/video/video.mp4) like the following:
+- Run `make predict-video` to run a demo of the YOLOv5 model on a video, which will make prediction on the [video.mp4](./src/assets/video/video.mp4) like the following
 
     ![helmet_demo_prediction_gif](./docs/helmet_demo_prediction.gif)
 
