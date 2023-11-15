@@ -9,3 +9,5 @@ yolov8n.pt
 
 # Log of running YOLO models
 runs
+
+.DS_Store
