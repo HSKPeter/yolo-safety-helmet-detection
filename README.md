@@ -3,13 +3,16 @@
 ## Development Guide
 - Run `make setup` to setup the development environment, and follow the instructions to setup datasets
 - Run `make yolo` to run a demo of the YOLOv5 model, which will retrain the yolov5 model and make prediction for the [bus.jpg](./src/assets/img/bus.jpg) like the following
-    <img src="./docs/bus_prediction.jpg" width="200">
+
+  <img src="./docs/bus_prediction.jpg" width="200">
 
 - Run `make predict-img` to run a demo of the YOLOv5 model on a image, which will make prediction on the [helmet.jpg](./src/assets/img/helmet.jpg) like the following
-    <img src="./docs/helmet_demo_prediction.jpg" width="200">
+
+  <img src="./docs/helmet_demo_prediction.jpg" width="200">
 
 - Run `make predict-video` to run a demo of the YOLOv5 model on a video, which will make prediction on the [video.mp4](./src/assets/video/video.mp4) like the following:
-    <img src="./docs/video_demo_prediction.gif" width="200">
+
+    ![helmet_demo_prediction_gif](./docs/helmet_demo_prediction.gif)
 
 - Run `make camera-detect` to run a demo of the YOLOv5 model on webcam, which will make prediction in real-time
 
