@@ -4,8 +4,10 @@ EPOCHS_COUNT = 3
 
 RANDOM_STATE = 42
 
-IMAGE_FOLDER_PATH = os.path.join(
-    os.path.dirname(__file__), os.pardir, "assets", "img")
+ASSETS_FOLDER_PATH = os.path.join(
+    os.path.dirname(__file__), os.pardir, "assets")
 
-YML_DATASET_PATH = os.path.join(os.path.dirname(
-    __file__), os.pardir, "assets", "datasets")
+IMAGE_FOLDER_PATH = os.path.join(ASSETS_FOLDER_PATH, "img")
+YML_DATASET_PATH = os.path.join(ASSETS_FOLDER_PATH, "datasets")
+
+PRETRAINED_MODEL_PATH = os.path.join(ASSETS_FOLDER_PATH, "pretrained_models")
