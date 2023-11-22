@@ -81,7 +81,12 @@ train: build
 
 camera-detect:
 	@echo "Running detection on webcam ..."
-	@(cd src/submodules/yolov5 && ${PYTHON3_VENV_BIN_PATH} detect.py --source 0 --nosave)
+	@(cd src/submodules/yolov5 && ${PYTHON3_VENV_BIN_PATH} detect.py \
+									--source 0 \
+									--weights ${ROOT_DIR}/src/assets/models/custom_1a.pt \
+									--classes 0 2 5 \
+									--conf 0.4 \
+									--nosave)
 
 predict-video:
 	@echo "Running prediction on test video ..."
