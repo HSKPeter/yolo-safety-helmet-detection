@@ -1,6 +1,6 @@
 import os
 
-EPOCHS_COUNT = 3
+EPOCHS_COUNT = 10
 
 RANDOM_STATE = 42
 
