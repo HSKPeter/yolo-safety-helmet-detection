@@ -18,8 +18,8 @@ else
 endif
 
 # Executables
-PYTHON3_VENV_BIN_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/bin/python3.11"
-PYTHON3_VENV_PIP_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/bin/pip3.11"
+PYTHON3_VENV_BIN_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/bin/python3.9"
+PYTHON3_VENV_PIP_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/bin/pip3.9"
 
 # Dataset urls
 KAGGLE_DATASET_1="https://www.kaggle.com/datasets/snehilsanyal/construction-site-safety-image-dataset-roboflow"
@@ -30,7 +30,7 @@ KAGGLE_DATASET_3="https://www.kaggle.com/datasets/muhammetzahitaydn/hardhat-vest
 YELLOW=\033[33m
 RESET=\033[0m
 
-setup: create-venv install show-setup-dataset-steps
+setup: create-venv clone-submodules install show-setup-dataset-steps
 
 create-venv:
 	@echo "Creating virtual environment ..."
@@ -42,6 +42,9 @@ show-setup-dataset-steps:
 	@echo "[STEP 2] Open your browser and visit ${KAGGLE_DATASET_2} to download dataset 2"
 	@echo "[STEP 3] Open your browser and visit ${KAGGLE_DATASET_3} to download dataset 3"
 	@echo "[STEP 4] Unzip the files, move them to the 'src/assets/datasets' folder and ensure the folder structure aligns with the README guide in that folder"
+
+clone-submodules:
+	@git submodule update --init --recursive
 
 install:
 	@echo "Installing dependencies ..."
