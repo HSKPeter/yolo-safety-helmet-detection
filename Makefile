@@ -18,8 +18,8 @@ else
 endif
 
 # Executables
-PYTHON3_VENV_BIN_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/bin/python3.11"
-PYTHON3_VENV_PIP_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/bin/pip3.11"
+PYTHON3_VENV_BIN_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/bin/python3.8"
+PYTHON3_VENV_PIP_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/bin/pip3.8"
 
 # Dataset urls
 KAGGLE_DATASET_1="https://www.kaggle.com/datasets/snehilsanyal/construction-site-safety-image-dataset-roboflow"
@@ -81,13 +81,13 @@ train: build
 
 camera-detect:
 	@echo "Running detection on webcam ..."
-	@(cd src/submodules/yolov5 && ${PYTHON3_VENV_BIN_PATH} detect.py --source 0 --nosave)
+	@(cd src/submodules/yolov5 && ${PYTHON3_VENV_BIN_PATH} detect.py --source 0 --weights ${ROOT_DIR}/src/assets/pretrained_models/yolov5_custom_ds3.pt --nosave)
 
 predict-video:
 	@echo "Running prediction on test video ..."
 	@(cd src/submodules/yolov5 && ${PYTHON3_VENV_BIN_PATH} detect.py \
 									--source ${ROOT_DIR}/src/assets/video/helmet.mp4 \
-									--weights ${ROOT_DIR}/src/assets/pretrained_models/yolov5s_custom_1.pt \
+									--weights ${ROOT_DIR}/src/assets/pretrained_models/yolov5_custom_ds3.pt \
 									--conf 0.4)
 
 predict-img: 
