@@ -18,8 +18,8 @@ else
 endif
 
 # Executables
-PYTHON3_VENV_BIN_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/bin/python3.9"
-PYTHON3_VENV_PIP_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/bin/pip3.9"
+PYTHON3_VENV_BIN_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/Lib/python3.12"
+PYTHON3_VENV_PIP_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/Lib/pip3.9"
 
 # Dataset urls
 KAGGLE_DATASET_1="https://www.kaggle.com/datasets/snehilsanyal/construction-site-safety-image-dataset-roboflow"
@@ -32,9 +32,15 @@ RESET=\033[0m
 
 setup: create-venv clone-submodules install show-setup-dataset-steps
 
+setup-python: create-venv-python clone-submodules install show-setup-dataset-steps
+
 create-venv:
 	@echo "Creating virtual environment ..."
 	@python3 -m venv ${VIRTUAL_ENV_NAME}
+
+create-venv-python:
+	@echo "Creating virtual environment"
+	@python -m venv ${VIRTUAL_ENV_NAME}
 
 show-setup-dataset-steps:
 	@echo "\n$(YELLOW)Please follow the steps below to setup the dataset:$(RESET)"

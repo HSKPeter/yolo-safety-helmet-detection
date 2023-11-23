@@ -1,7 +1,14 @@
 # YOLO Safety Helmet Detection
 
+## Required Software
+- `make`
+  - Windows Installation: https://gnuwin32.sourceforge.net/packages/make.htm
+- `python3`
+  - Python Installation: https://www.python.org/downloads/release/python-3120
+
 ## Development Guide
 - Run `make setup` to setup the development environment, and follow the instructions to setup datasets
+  - Run `make setup-python` if you get an error regarding your python versioning
 - Run `make yolo` to run a demo of the YOLOv5 model, which will retrain the yolov5 model and make prediction for the [bus.jpg](./src/assets/img/bus.jpg) like the following
 
   <img src="./docs/bus_prediction.jpg" width="200">
