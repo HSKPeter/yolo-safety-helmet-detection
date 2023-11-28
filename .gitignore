@@ -11,3 +11,5 @@ yolov8n.pt
 runs
 
 .DS_Store
+
+labels/
