@@ -1,3 +1,6 @@
 [submodule "src/submodules/yolov5"]
 	path = src/submodules/yolov5
 	url = https://github.com/ultralytics/yolov5.git
+[submodule "jetson-nano-workspace/yolov5"]
+	path = jetson-nano-workspace/yolov5
+	url = https://github.com/ultralytics/yolov5.git
