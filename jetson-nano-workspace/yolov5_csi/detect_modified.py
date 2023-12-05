@@ -125,7 +125,7 @@ def run(
 
             # display the frame
             cv2.imshow("CSI Camera", frame)
-            if cv2.waiKey(25) & 0xFF == ord('q'):
+            if cv2.waitKey(25) & 0xFF == ord('q'):
                 break
             
         # close the camera instance
