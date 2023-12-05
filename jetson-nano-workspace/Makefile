@@ -1,4 +1,8 @@
-install:
+upgrade-pip:
+	@echo "Upgrading pip..."
+	pip install --upgrade pip
+
+install: upgrade-pip
 	@echo "Installing nanocamera..."
 	pip install nanocamera
 
