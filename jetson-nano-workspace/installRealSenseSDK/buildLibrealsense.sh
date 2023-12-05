@@ -150,7 +150,7 @@ if [[ $NUM_PROCS == "" ]] ; then
   fi
 fi
 
-time make -j$NUM_PROCS
+time make -j1
 if [ $? -eq 0 ] ; then
   echo "librealsense make successful"
 else
