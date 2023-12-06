@@ -83,6 +83,9 @@ train: build
 	@(cd src && ${PYTHON3_VENV_BIN_PATH} train.py)
 
 labels:
+	@echo "Unzipping labels of dataset 1 ..."
+	@(cd src/assets/labels/ds1 && unzip labels.zip)
+	@echo "Unzipping labels of dataset 3 ..."
 	@(cd src/assets/labels/ds3 && unzip labels.zip)
 
 camera-detect:
