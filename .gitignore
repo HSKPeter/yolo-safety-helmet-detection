@@ -11,6 +11,6 @@ yolov8n.pt
 runs
 
 # Ignore all txt files in child directories of src/assets/labels/ds3/
-src/assets/labels/ds3/**/*.txt
+src/assets/labels/**/*.txt
 
 .DS_Store
