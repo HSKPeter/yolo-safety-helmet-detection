@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 # Define the path to the labels folder
 folder_of_this_file = os.path.dirname(__file__)
-labels_folder_path = os.path.join(folder_of_this_file, 'labels')
+labels_folder_path = os.path.join(folder_of_this_file, os.pardir, 'assets', 'labels', 'ds3', 'train')
 
 # Read all filenames in the labels folder
 filenames = os.listdir(labels_folder_path)
@@ -45,11 +45,18 @@ for filename in filenames:
         else:
             labels[label] = 1
 
+
+classes_mapping = {
+    '0': 'Helmet',
+    '1': 'Vest',
+    '2': 'Head',
+}
+
 # Draw a pie chart with the labels
 labels_to_plot = []
 sizes = []
 for label in labels:
-    labels_to_plot.append(label)
+    labels_to_plot.append(classes_mapping[label])
     sizes.append(labels[label])
 
 print(labels)
@@ -57,4 +64,5 @@ print(labels)
 # Show percentages in the pie chart
 plt.pie(sizes, labels=labels_to_plot, autopct='%1.1f%%')
 plt.axis('equal')
+plt.title('Labels distribution in dataset 3')
 plt.show()
