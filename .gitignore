@@ -10,4 +10,7 @@ yolov8n.pt
 # Log of running YOLO models
 runs
 
+# Ignore all txt files in child directories of src/assets/labels/ds3/
+src/assets/labels/**/*.txt
+
 .DS_Store
