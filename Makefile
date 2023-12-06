@@ -82,6 +82,9 @@ train: build
 	@echo "Training custom YOLO model"
 	@(cd src && ${PYTHON3_VENV_BIN_PATH} train.py)
 
+labels:
+	@(cd src/assets/labels/ds3 && unzip labels.zip)
+
 camera-detect:
 	@echo "Running detection on webcam ..."
 	@(cd src/submodules/yolov5 && ${PYTHON3_VENV_BIN_PATH} detect.py --source 0 --nosave)
