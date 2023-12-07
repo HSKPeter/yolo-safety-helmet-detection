@@ -2,6 +2,7 @@
 *.egg-info
 __pycache__
 venv
+.venv
 
 # YOLO models
 yolov8n.pt
