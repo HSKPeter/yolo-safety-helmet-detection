@@ -97,8 +97,7 @@ predict-video:
 	@(cd src/submodules/yolov5 && ${PYTHON3_VENV_BIN_PATH} detect.py \
 									--source ${ROOT_DIR}/src/assets/video/helmet.mp4 \
 									--weights ${ROOT_DIR}/src/assets/models/yolov5_custom_ds3_35.pt \
-									--classes 0 2 5 \
-									--conf 0.4)
+									--conf 0.7)
 
 predict-img: 
 	@echo "Running prediction on test image ..."

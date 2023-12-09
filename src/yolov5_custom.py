@@ -13,7 +13,7 @@ def main():
     LABEL_FOR_PERSON = 5
     model.classes = [LABEL_FOR_HARDHAT, LABEL_FOR_NO_HARDHAT, LABEL_FOR_PERSON]
 
-    img_path = os.path.join(IMAGE_FOLDER_PATH, "no_helmet", "no_helmet_1.jpg")
+    img_path = os.path.join(IMAGE_FOLDER_PATH, "helmet.jpg")
     results = model(img_path)
     
     results.show()
