@@ -4,7 +4,7 @@ import os
 from util.config import IMAGE_FOLDER_PATH, CUSTOM_MODEL_PATH
 
 def main():
-    custom_yolo_v5_model_path = os.path.join(CUSTOM_MODEL_PATH, "custom_0.pt")
+    custom_yolo_v5_model_path = os.path.join(CUSTOM_MODEL_PATH, "yolov5_custom_ds3_35.pt")
 
     model = torch.hub.load('ultralytics/yolov5', 'custom', path=custom_yolo_v5_model_path)
     model.conf = 0.2
