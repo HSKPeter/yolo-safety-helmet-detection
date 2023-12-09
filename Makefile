@@ -18,8 +18,8 @@ else
 endif
 
 # Executables
-PYTHON3_VENV_BIN_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/bin/python3.9"
-PYTHON3_VENV_PIP_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/bin/pip3.9"
+PYTHON3_VENV_BIN_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/bin/python3"
+PYTHON3_VENV_PIP_PATH := "${ROOT_DIR}/${VIRTUAL_ENV_NAME}/bin/pip3"
 
 # Dataset urls
 KAGGLE_DATASET_1="https://www.kaggle.com/datasets/snehilsanyal/construction-site-safety-image-dataset-roboflow"
