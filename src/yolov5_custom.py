@@ -4,7 +4,7 @@ import os
 from util.config import IMAGE_FOLDER_PATH, CUSTOM_MODEL_PATH
 
 def main():
-    custom_yolo_v5_model_path = os.path.join(CUSTOM_MODEL_PATH, "custom_0.pt")
+    custom_yolo_v5_model_path = os.path.join(CUSTOM_MODEL_PATH, "yolov5_custom_ds3_35.pt")
 
     model = torch.hub.load('ultralytics/yolov5', 'custom', path=custom_yolo_v5_model_path)
     model.conf = 0.2
@@ -13,7 +13,7 @@ def main():
     LABEL_FOR_PERSON = 5
     model.classes = [LABEL_FOR_HARDHAT, LABEL_FOR_NO_HARDHAT, LABEL_FOR_PERSON]
 
-    img_path = os.path.join(IMAGE_FOLDER_PATH, "no_helmet", "no_helmet_1.jpg")
+    img_path = os.path.join(IMAGE_FOLDER_PATH, "helmet.jpg")
     results = model(img_path)
     
     results.show()
